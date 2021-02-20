@@ -21,7 +21,7 @@ services:
     environment:
       - discovery.type=single-node
     volumes:
-      - ./.docker/elasticdata:/usr/share/elasticsearch/data
+      - micro-catalog-elasticsearch-volume:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
     networks:
@@ -34,6 +34,9 @@ services:
     networks:
       - app-network
 
+volumes:
+  micro-catalog-elasticsearch-volume:
+    external: true
 
 networks:
   app-network:
