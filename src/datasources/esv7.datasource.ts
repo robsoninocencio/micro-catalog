@@ -4,15 +4,21 @@ import config from './esv7.datasource.config';
 @lifeCycleObserver('datasource')
 export class Esv7DataSource
   extends juggler.DataSource
-  implements LifeCycleObserver {
+  implements LifeCycleObserver
+{
   static dataSourceName = 'esv7';
   static readonly defaultConfig = config;
 
   constructor(
-    @inject('datasources.config.esv7', {optional: true})
+    // @inject('datasources.config.esv7', {optional: true})
     dsConfig: object = config,
   ) {
     console.log('config = ', config);
+    console.log(
+      'process.env.ELASTIC_SEARCH_HOST = ',
+      process.env.ELASTIC_SEARCH_HOST,
+    );
+
     super(dsConfig);
   }
 }
